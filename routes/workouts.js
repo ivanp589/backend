@@ -1,15 +1,17 @@
 const express = require('express')
 const statsImport = require('../models/StatsModel')
+const workoutImport = require('../models/WorkoutsModel')
 
 const router = express.Router()
 
-
-
-
-
-//get all workouts
-router.get('/', (req,res) => {
-    res.json({msg: 'get all workouts'})
+//get all workouts <------------------  working function *************
+router.get('/', async (req,res) => {
+    try {
+        const allWorkouts = await workoutImport.find({})
+        res.status(200).json(allWorkouts)
+    } catch (error) {
+        res.status(400).json({error: error.message})
+    }
 })
 
 //get a single workout
@@ -17,7 +19,8 @@ router.get('/:id',(req,res)=>{
     res.json({msg: 'get a single workout'})
 })
 
-//post a new workout    <------------------ only working function so far 7-1-22 *************
+//post a new stat    <------------------  working function *************
+// allows identical stats 7-2-22
 router.post('/', async (req, res) =>{
     const {reps,sets,weight,workout} = req.body
     try {

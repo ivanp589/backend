@@ -2,13 +2,9 @@ const express = require('express')
 const { default: mongoose } = require('mongoose')
 const usersImport = require('../models/UsersModel')
 
-
 const login = express.Router()
 
-
-
-//post a new workout    <------------------ only working function so far 7-1-22 *************
- 
+//post a new workout    <------------------  working function *************
 login.post('/', async (req, res) =>{
     const {username,password} = req.body
      

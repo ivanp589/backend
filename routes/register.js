@@ -4,7 +4,7 @@ const usersImport = require('../models/UsersModel')
 
 const register = express.Router()
 
-//register a new user    <------------------ only working function so far 7-1-22 *************
+//register a new user    <------------------  working function *************
 register.post('/', async (req, res) =>{
     const {first,last,username,password} = req.body
      // try catch statement for finding if the user exists
