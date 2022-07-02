@@ -6,7 +6,7 @@ const Schema = mongoose.Schema
 const usersSchema = new Schema({
     firstName: {
         type: String,
-        // required: true
+        // required: true   
     },
     lastName: {
         type: String,
@@ -21,7 +21,7 @@ const usersSchema = new Schema({
         required: true
     }
     
-})// ,{ timestamp: true }
+}, { versionKey: false })   //versionKey: false -> gets rid of _v when adding to a collection
 
 // the name you send below is the name that the collection will be called
 var collectionName = 'Users'
