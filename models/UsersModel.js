@@ -19,6 +19,10 @@ const usersSchema = new Schema({
     password: {
         type: String,
         required: true
+    },
+    email: {
+        type: String,
+        required: false
     }
     
 }, { versionKey: false })   //versionKey: false -> gets rid of _v when adding to a collection

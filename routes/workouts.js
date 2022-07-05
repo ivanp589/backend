@@ -1,11 +1,12 @@
 const express = require('express')
 const statsImport = require('../models/StatsModel')
 const workoutImport = require('../models/WorkoutsModel')
+const mongoose = require('mongoose')
 
 const router = express.Router()
 
 //get all workouts <------------------  working function *************
-router.get('/', async (req,res) => {
+router.get('/', async (req, res) => {
     try {
         const allWorkouts = await workoutImport.find({})
         res.status(200).json(allWorkouts)
@@ -22,9 +23,10 @@ router.get('/:id',(req,res)=>{
 //post a new stat    <------------------  working function *************
 // allows identical stats 7-2-22
 router.post('/', async (req, res) =>{
-    const {reps,sets,weight,workout} = req.body
+    const {reps,sets,weight,workout,exerciseID} = req.body
+    
     try {
-        const newStats = await statsImport.create({reps,sets,weight,workout})
+        const newStats = await statsImport.create({reps,sets,weight,workout,exerciseID})
         res.status(200).json(newStats)
     } catch (error) {
         res.status(400).json({error: error.message})
